@@ -7,10 +7,20 @@
             </div>
             <div class="col-10">
                 <section>
-                    <div class="row">
-                        <div class="col-12">
-                            booh
-
+                    <div class="card" id="card-person">
+                        <div class="card-header">
+                            {{this.person.firstName + ' ' + this.person.lastName}}
+                        </div>
+                        <div class="card-body" >
+                            <h5 class="card-title">Special title treatment</h5>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional
+                                content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-secondary" [routerLink]="['/']">
+                                Back to Menu
+                            </button>
                         </div>
                     </div>
                 </section>

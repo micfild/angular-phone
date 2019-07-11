@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Person } from "../../entity/Person";
 import { HttpClient } from "@angular/common/http";
+import {Phones} from "../../entity/Phones";
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,15 @@ export class CardService {
 
   constructor(private httpClient: HttpClient) {
     this.getPerson();
+  }
+
+  getPhone(link: string): Phones {
+    const phone = new Phones('','');
+    this.httpClient.get<Person>('http://localhost:8000' + link).subscribe((result: object) => {
+      console.log('get phone');
+      Object.assign(phone, result);
+    });
+    return phone;
   }
 
   getPeople(id: number): void {
