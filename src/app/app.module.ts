@@ -3,14 +3,22 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CardListComponent } from './card-list/card-list.component';
+import { HeadComponent } from './head/head.component';
+import {HttpClientModule} from "@angular/common/http";
+import { CardEditComponent } from './card-edit/card-edit.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CardListComponent,
+    HeadComponent,
+    CardEditComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
