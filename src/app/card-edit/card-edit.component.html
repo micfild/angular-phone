@@ -9,13 +9,27 @@
                 <section>
                     <div class="card" id="card-person">
                         <div class="card-header">
-                            {{this.person.firstName + ' ' + this.person.lastName}}
+                            {{this.cardService.person?.firstName + ' ' + this.cardService.person?.lastName}}
                         </div>
                         <div class="card-body" >
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional
-                                content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Tel number</th>
+                                    <th scope="col">type</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                </tr>
+                                </thead>
+                                <tbody *ngIf="this.cardService.phoneList.length !== 0">
+                                <tr *ngFor="let num of this.cardService.phoneList">
+                                    <th scope="row">{{num.number}}</th>
+                                    <td>{{num.type}}</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                         <div class="card-footer">
                             <button type="button" class="btn btn-secondary" [routerLink]="['/']">

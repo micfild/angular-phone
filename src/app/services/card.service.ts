@@ -8,26 +8,31 @@ import {Phones} from "../../entity/Phones";
 })
 export class CardService {
   listPerson: Array<Person>;
+  phoneList: Array<Phones> = [];
   person: Person = null;
+
 
   constructor(private httpClient: HttpClient) {
     this.getPerson();
   }
 
-  getPhone(link: string): Phones {
-    const phone = new Phones('','');
-    this.httpClient.get<Person>('http://localhost:8000' + link).subscribe((result: object) => {
-      console.log('get phone');
-      Object.assign(phone, result);
-    });
-    return phone;
+  getPhone(): void {
+    this.phoneList = [];
+    for(const link of this.person.phones){
+      this.httpClient.get<Person>('http://localhost:8000' + link).subscribe((result: object) => {
+        console.log('get phone');
+        this.phoneList.push(Object.assign(new Phones('',''), result));
+        console.log(this.phoneList);
+      });
+    }
+
   }
 
   getPeople(id: number): void {
     this.httpClient.get<Person>('http://localhost:8000/people/' + id).subscribe((result: object) => {
-      console.log('get person');
-      this.person = Object.assign(new Person('',''), result);
-    });
+        this.person = Object.assign(new Person('',''), result);
+        });
+    console.log(this.person);
   }
 
   getPerson(): void {

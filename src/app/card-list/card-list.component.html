@@ -8,14 +8,14 @@
             <div class="col-10">
                 <section>
                     <div class="row">
-                        <div *ngFor="let item of cardService.listPerson" class="col-lg-3 col-md-4 col-sm-6 p-1">
+                        <div *ngFor="let person of cardService.listPerson" class="col-lg-3 col-md-4 col-sm-6 p-1">
                             <div class="card " id="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{item.lastName + ' ' + item.firstName}}</h5>
-                                    <p class="card-text">{{(item.notes !== null)?item.notes.substring(0,80) + '...':item.notes}}</p>
+                                    <h5 class="card-title">{{person.lastName + ' ' + person.firstName}}</h5>
+                                    <p class="card-text">{{(person.notes !== null)?person.notes.substring(0,80) + '...':person.notes}}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <a class="btn btn-primary" [routerLink]="['/card-edit', this.item.id]" >Edit</a>
+                                    <a class="btn btn-primary" [routerLink]="['/card-edit', this.person.id]" >Edit</a>
                                 </div>
                             </div>
                         </div>
@@ -27,4 +27,4 @@
         </div>
     </div>
 </section>
-<p *ngFor="let item of cardService.listPerson">{{item.firstName}}</p>
+<p *ngFor="let person of cardService.listPerson">{{person.firstName}}</p>
